@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,5 +17,12 @@ namespace Business.Constants
         public static string CarNoRent = "Araba kiralanamıyor";
         public static string CarRent = "Arabayı kiralayabilirsiniz.";
         internal static string CarImageLimitExceeded = "5'ten fazla resim eklenemez.";
+        public static string AuthorizationDenied = "Yetkiniz yok.";
+        public static string UserRegistered="Kayıt yapıldı";
+        public static string UserNotFound="Kullanıcı bulunamadı";
+        public static string PasswordError="Şifre hatalı";
+        public static string UserAlreadyExists="Kullanıcı zaten var";
+        public static string AccessTokenCreated="Access token oluşturuldu";
+        public static string SuccessfulLogin="Giriş başarılı";
     }
 }
