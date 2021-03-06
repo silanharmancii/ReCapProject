@@ -29,6 +29,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarAdded);
         }
 
+        public IResult AddTransactionalTest(Car car)
+        {
+            throw new NotImplementedException();
+        }
+
         public IResult Delete(Car car)
         {
             throw new NotImplementedException();
