@@ -19,11 +19,11 @@ namespace ConsoleUI
         {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            var result = rentalManager.GetCarDetails();
+            var result = rentalManager.GetRentalDetails();
 
             if (result.Success == true)
             {
-                foreach (var car in rentalManager.GetCarDetails().Data)
+                foreach (var car in rentalManager.GetRentalDetails().Data)
                 {
                     Console.WriteLine(car.CarName);
                 }
