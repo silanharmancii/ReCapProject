@@ -94,12 +94,12 @@ namespace WebAPI.Controllers
         public IActionResult Add(Car car)
         {
             var result = _carService.Add(car);
-
             if (result.Success == true)
             {
                 return Ok(result);
             }
             return BadRequest(result);
+
         }
 
         [HttpPost("delete")]

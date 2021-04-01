@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -40,9 +41,46 @@ namespace WebAPI.Controllers
 
                 if (result.Success == true)
                 {
-                    return Ok(result);
+                    return Ok(result.Data);
                 }
-                return BadRequest(result);
+                return BadRequest(result.Message);
             }
+        [HttpGet("getrentaldetailsbyid")]
+
+        public IActionResult GetRentalDetailsById(int id)
+        {
+            var result = _rentalService.GetRentalDetailsById(id);
+
+            if (result.Success == true)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
         }
+
+        [HttpGet("getrentalbycarid")]
+
+        public IActionResult GetRentalByCarId(int id)
+        {
+            var result = _rentalService.GetRentalByCarId(id);
+
+            if (result.Success == true)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("add")]
+        public IActionResult Add(Rental rental)
+        {
+            var result = _rentalService.Add(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+    }
 }

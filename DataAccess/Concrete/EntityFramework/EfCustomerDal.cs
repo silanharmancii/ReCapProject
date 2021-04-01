@@ -7,12 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCustomerDal : EfEntityRepositoryBase<Customer,CarMarketContext>,ICustomerDal
     {      
-        public List<CustomerDetailDto> GetCustomerDetails()
+        public List<CustomerDetailDto> GetCustomerDetails(Expression<Func<CustomerDetailDto, bool>> filter = null)
         {
             using(CarMarketContext context=new CarMarketContext())
             {
@@ -25,10 +26,34 @@ namespace DataAccess.Concrete.EntityFramework
                                  CustomerId=cu.CustomerId,
                                  FirstName=u.FirstName,
                                  LastName=u.LastName,
-                                 CompanyName=cu.CompanyName
+                                 CompanyName=cu.CompanyName,
+                                 Password=u.PasswordHash,
 
                              };
-                return result.ToList();
+                return (filter == null ? result.ToList() :
+                                    result.Where(filter).ToList());
+            }
+        }
+       
+        public CustomerDetailDto GetCustomerDetailsById(Expression<Func<CustomerDetailDto, bool>> filter)
+        {
+            using (CarMarketContext context = new CarMarketContext())
+            {
+                #region Data
+                var data = from c in context.Customers
+                           join u in context.Users on c.UserId equals u.Id
+                           select new CustomerDetailDto
+                           {
+                               CustomerId = c.CustomerId,
+                               FirstName = u.FirstName,
+                               LastName = u.LastName,
+                               Email = u.Email,
+                               Password = u.PasswordHash,
+                               CompanyName = c.CompanyName
+                           };
+                #endregion
+
+                return data.FirstOrDefault(filter);
             }
         }
     }

@@ -30,7 +30,8 @@ namespace Business.Concrete
 
         public IResult Delete(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Delete(rental);
+            return new SuccessResult(Messages.SuccessDeleted);
         }
 
         public IDataResult<List<Rental>> GetAll()
@@ -38,6 +39,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
+        public IDataResult<List<RentalDetailDto>> GetRentalByCarId(int id)
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(p => p.CarId == id),Messages.SuccessListed);
+        }
+
+        public IDataResult<List<RentalDetailDto>> GetRentalDetailsById(int id)
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(p => p.Id== id),Messages.SuccessListed);
+        }
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails()
         {
@@ -46,7 +56,8 @@ namespace Business.Concrete
 
         public IResult Update(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Update(rental);
+            return new SuccessResult(Messages.SuccessUpdated);
         }
     }
 }
