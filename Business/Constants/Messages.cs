@@ -35,6 +35,6 @@ namespace Business.Constants
         public static string SuccessDeleted = "Silme basarili.";
         public static string SuccessListed = "Listeleme Basarili.";
         public static string CarIsNotFound = "Araç bulunamadı";
-
+        public static string CarUpdated = "Araç güncellendi";
     }
 }

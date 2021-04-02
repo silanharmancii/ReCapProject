@@ -42,5 +42,17 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpGet("getcolorbyid")]
+        public IActionResult Get(int colorId)
+        {
+            var result = _colorService.GetColorById(colorId);
+
+            if (result.Success == true)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }

@@ -43,5 +43,30 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpPost("update")]
+
+        public IActionResult Update(Brand brand)
+        {
+            var result = _brandService.Update(brand);
+
+            if (result.Success == true)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbrandbyid")]
+        public IActionResult Get(int brandId)
+        {
+            var result = _brandService.GetBrandById(brandId);
+
+            if (result.Success == true)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }
