@@ -11,6 +11,12 @@ namespace Business.Abstract
     {
         List<OperationClaim> GetClaims(User user);
         void Add(User user);
-        User GetByMail(string email);
+        IResult Update(User user);
+
+        IDataResult<User> GetUserById(int id);
+
+        IDataResult< User> GetByMail(string email);
+
+        IResult AddFindexPoint(int userId);
     }
 }

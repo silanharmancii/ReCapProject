@@ -13,7 +13,7 @@ namespace Business.Concrete
 {
     public class CreditCardManager : ICreditCardService
     {
-        private ICreditCardDal _cardDal;
+        ICreditCardDal _cardDal;
         public CreditCardManager(ICreditCardDal cardDal)
         {
             _cardDal = cardDal;
@@ -26,6 +26,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.SuccessAdded);
         }
 
+        public IResult AddRental(string cardNumber, Rental rental, decimal amount)
+        {
+            throw new NotImplementedException();
+        }
+
         public IResult Delete(CreditCard card)
         {
             _cardDal.Delete(card);
@@ -34,8 +39,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CreditCard>> GetAll()
         {
-            var data = _cardDal.GetAll();
-            return new SuccessDataResult<List<CreditCard>>(data, Messages.SuccessListed);
+            return new SuccessDataResult<List<CreditCard>>(_cardDal.GetAll(), Messages.SuccessListed);
         }
 
         public IDataResult<List<CreditCard>> GetByCardNumber(string cardNumber)
@@ -50,7 +54,7 @@ namespace Business.Concrete
 
         public IResult IsCardExist(CreditCard card)
         {
-            var result = _cardDal.Get(p => p.NameOnTheCard == card.NameOnTheCard && p.CardNumber == card.CardNumber && p.CardCvv == card.CardCvv);
+            var result = _cardDal.Get(p => p.NameOnTheCard == card.NameOnTheCard && p.CardNumber == card.CardNumber && p.CardCVV == card.CardCVV);
             if (result == null)
             {
                 return new ErrorResult();

@@ -90,7 +90,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-
+        //[Authorize()]
         public IActionResult Add(Car car)
         {
             var result = _carService.Add(car);

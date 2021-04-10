@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -58,9 +59,9 @@ namespace WebAPI.Controllers
             var result = _cardService.GetAll();
             if (result.Success)
             {
-                return Ok(result);
+                return Ok(result.Data);
             }
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
         [HttpGet("getbyid")]
@@ -69,9 +70,9 @@ namespace WebAPI.Controllers
             var result = _cardService.GetById(id);
             if (result.Success)
             {
-                return Ok(result);
+                return Ok(result.Data);
             }
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
         [HttpGet("getbycardnumber")]
@@ -80,9 +81,9 @@ namespace WebAPI.Controllers
             var result = _cardService.GetByCardNumber(cardNumber);
             if (result.Success)
             {
-                return Ok(result);
+                return Ok(result.Data);
             }
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
 
         [HttpPost("iscardexist")]
@@ -94,6 +95,17 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             return Ok(result);
+        }
+
+        [HttpPost("addrental")]
+        public IActionResult AddRental(CreditCard card)
+        {
+            var result = _cardService.Add(card);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }

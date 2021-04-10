@@ -36,5 +36,8 @@ namespace Business.Constants
         public static string SuccessListed = "Listeleme Basarili.";
         public static string CarIsNotFound = "Araç bulunamadı";
         public static string CarUpdated = "Araç güncellendi";
+        public static string UserUpdated= "Kullanıcı güncellendi";
+        public static string findexPointMax = "Maximum findex puana ulaştınız.";
+        public static string findexPointAdd = "Findex puanı eklendi.";
     }
 }

@@ -8,6 +8,7 @@ namespace Business.Abstract
 {
     public interface ICreditCardService 
     {
+        IResult AddRental(string cardNumber, Rental rental, decimal amount);
         IResult Add(CreditCard card);
         IResult Update(CreditCard card);
         IResult Delete(CreditCard card);
@@ -15,6 +16,7 @@ namespace Business.Abstract
         IDataResult<CreditCard> GetById(int id);
         IResult IsCardExist(CreditCard card);
         IDataResult<List<CreditCard>> GetByCardNumber(string cardNumber);
+        //IDataResult<List<CreditCard>> GetCardByCustomerId(int customerId);
 
     }
 }

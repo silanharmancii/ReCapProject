@@ -13,8 +13,8 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(c => c.CardNumber).NotEmpty();
             RuleFor(c => c.CardNumber).Length(16);
 
-            RuleFor(c => c.CardCvv).NotEmpty();
-            RuleFor(c => c.CardCvv).Length(3);
+            RuleFor(c => c.CardCVV).NotEmpty();
+            RuleFor(c => c.CardCVV).Length(3);
 
             RuleFor(c => c.NameOnTheCard).NotEmpty();
             RuleFor(c => c.TotalMoney).NotEmpty();
