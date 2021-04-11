@@ -36,7 +36,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  ModelYear  = p.ModelYear,
                                  ImagePath= i.ImagePath,
                                  Description = p.Description,
-                                 Status = !context.Rentals.Any(r => r.CarId == p.CarId && (r.ReturnDate == null || r.ReturnDate > DateTime.Now))
+                                 Status = !context.Rentals.Any(r => r.CarId == p.CarId && (r.ReturnDate == null || r.ReturnDate > DateTime.Now)),
+                                 FindexPoint=p.FindexPoint
                              };
                 return result.ToList();
             }

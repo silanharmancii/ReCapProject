@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
 
             if (result.Success == true)
             {
-                return Ok(result);
+                return Ok(result.Data);
             }
             return BadRequest(result);
         }
@@ -56,7 +56,6 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
-
 
     }
 }

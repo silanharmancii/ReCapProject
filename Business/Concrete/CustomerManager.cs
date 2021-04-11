@@ -31,8 +31,9 @@ namespace Business.Concrete
 
         public IDataResult<List<Customer>> GetAll()
         {
-            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll());
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(),Messages.CarsListed);
         }
+
 
         public IDataResult<CustomerDetailDto> GetCustomerById(int id)
         {

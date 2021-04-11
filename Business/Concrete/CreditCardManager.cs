@@ -5,6 +5,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -50,6 +51,21 @@ namespace Business.Concrete
         public IDataResult<CreditCard> GetById(int id)
         {
             return new SuccessDataResult<CreditCard>(_cardDal.Get(p=>p.Id==id), Messages.SuccessListed);
+        }
+
+        public IDataResult<CardDetailDto> GetCardById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<CardDetailDto>> GetCardByUserId(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<CardDetailDto>> GetCardDetails(int id)
+        {
+            return new SuccessDataResult<List<CardDetailDto>>(_cardDal.GetCardDetails(p => p.CardId == id));
         }
 
         public IResult IsCardExist(CreditCard card)

@@ -28,6 +28,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  LastName=u.LastName,
                                  CompanyName=cu.CompanyName,
                                  Password=u.PasswordHash,
+                                 Email = u.Email,
+
 
                              };
                 return (filter == null ? result.ToList() :
@@ -39,7 +41,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (CarMarketContext context = new CarMarketContext())
             {
-                #region Data
+                
                 var data = from c in context.Customers
                            join u in context.Users on c.UserId equals u.Id
                            select new CustomerDetailDto
@@ -51,7 +53,7 @@ namespace DataAccess.Concrete.EntityFramework
                                Password = u.PasswordHash,
                                CompanyName = c.CompanyName
                            };
-                #endregion
+                
 
                 return data.FirstOrDefault(filter);
             }
