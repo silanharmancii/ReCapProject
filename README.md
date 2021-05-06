@@ -1,6 +1,6 @@
 # Car Rental Project - Backend
 
-Entity Framework kullanılmıştır. Proje geliştirme süresince AOP, FluentValidation, Autofac, WenAPI kullanılıp, SOLID prensiplerine bağlı kalınmıştır. 
+Entity Framework kullanılmıştır. Proje geliştirme süresince AOP, FluentValidation, Autofac, Restful API kullanılıp, SOLID prensiplerine bağlı kalınmıştır. 
 
 ## Proje İçeriği:
 
